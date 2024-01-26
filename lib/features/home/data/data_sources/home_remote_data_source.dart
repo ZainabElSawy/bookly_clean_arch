@@ -19,15 +19,16 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
     Map<String, dynamic> data = await apiService.get(
         endPoint: "volumes?q=programming&Filtering=free-ebooks");
     List<BookEntity> books = getBooksList(data);
-    saveBooksData(books,kFeaturedBox);
+    saveBooksData(books, kFeaturedBox);
     return books;
   }
-  
+
   @override
   Future<List<BookEntity>> fetchNewestBooks() async {
     Map<String, dynamic> data = await apiService.get(
         endPoint: "volumes?q=programming&Filtering=free-ebooks&sorting=newest");
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books, kNewestBox); 
     return books;
   }
 

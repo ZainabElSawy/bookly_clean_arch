@@ -14,7 +14,8 @@ import 'features/home/presentation/view_models/newest_books_cubit/newest_books_c
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   setupServiceLocator();
   runApp(const BooklyApp());
 }
