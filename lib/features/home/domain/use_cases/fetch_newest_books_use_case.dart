@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/use_cases/use_case.dart';
-import '../../data/repos/home_repo.dart';
+import '../repos/home_repo.dart';
 
 class FetchNewestBooksUseCase extends UseCase<List<BookModel>, NoParam> {
   final HomeRepo homeRepo;
