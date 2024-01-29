@@ -1,6 +1,7 @@
 import 'package:bookly_clean_arch/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:bookly_clean_arch/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/domain/repos/home_repo.dart';
+import 'package:bookly_clean_arch/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -22,4 +23,6 @@ void setupServiceLocator() {
       homeLocalDataSource: getIt.get<HomeLocalDataSource>()));
   getIt.registerSingleton<FetchFeaturedBooksUseCase>(
       FetchFeaturedBooksUseCase(homeRepo: getIt.get<HomeRepo>()));
+  getIt.registerSingleton<FetchNewestBooksUseCase>(
+      FetchNewestBooksUseCase(homeRepo: getIt.get<HomeRepo>()));
 }
