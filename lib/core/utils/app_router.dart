@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/home/data/model/book_model/book_model.dart';
 import '../../features/home/data/repos/home_repo_imp.dart';
-import '../../features/home/presentation/view_models/similar_books_cubit/similar_books_cubit.dart';
+import '../../features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import '../../features/home/presentation/views/book_details_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/search/presentation/views/search_view.dart';

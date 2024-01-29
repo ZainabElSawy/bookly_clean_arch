@@ -8,8 +8,10 @@ import 'core/utils/app_router.dart';
 import 'core/utils/constant.dart';
 import 'core/utils/service_locator.dart';
 import 'features/home/data/repos/home_repo_imp.dart';
-import 'features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
-import 'features/home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
+import 'features/home/domain/use_cases/fetch_featured_books_use_case.dart';
+import 'features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
+import 'features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
+
 
 void main() async {
   await Hive.initFlutter();
@@ -28,7 +30,7 @@ class BooklyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImp>())
+          create: (context) => FeaturedBooksCubit(getIt.get<FetchFeaturedBooksUseCase>())
             ..fetchFeaturedBooks(),
         ),
         BlocProvider(

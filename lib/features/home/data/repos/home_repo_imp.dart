@@ -7,7 +7,6 @@ import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../domain/repos/home_repo.dart';
-import '../model/book_model/book_model.dart';
 
 class HomeRepoImp implements HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -20,9 +19,10 @@ class HomeRepoImp implements HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
     try {
-      List<BookEntity> cachedBooks = homeLocalDataSource.fetchFeaturedBooks();
-      if (cachedBooks.isNotEmpty) return right(cachedBooks);
-      List<BookEntity> books = await homeRemoteDataSource.fetchFeaturedBooks();
+      List<BookEntity> books;
+      books = homeLocalDataSource.fetchFeaturedBooks();
+      if (books.isNotEmpty) return right(books);
+      books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
       // ignore: deprecated_member_use
@@ -35,10 +35,11 @@ class HomeRepoImp implements HomeRepo {
 
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
-     try {
-      List<BookEntity> cachedBooks = homeLocalDataSource.fetchNewestBooks();
-      if (cachedBooks.isNotEmpty) return right(cachedBooks);
-      List<BookEntity> books = await homeRemoteDataSource.fetchNewestBooks();
+    try {
+      List<BookEntity> books;
+      books = homeLocalDataSource.fetchNewestBooks();
+      if (books.isNotEmpty) return right(books);
+      books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
       // ignore: deprecated_member_use
