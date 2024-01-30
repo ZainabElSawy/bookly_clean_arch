@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../../../../core/widgets/custom_loading_indicator.dart';
-import '../../view_models/newest_books_cubit/newest_books_cubit.dart';
+import '../../manager/newest_books_cubit/newest_books_cubit.dart';
 import 'newest_books_list_view_item.dart';
 
 class NewestBooksListView extends StatelessWidget {

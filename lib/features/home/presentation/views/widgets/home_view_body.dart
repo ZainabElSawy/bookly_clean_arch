@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'custom_app_bar.dart';
-import 'featured_list_view.dart';
+import 'featured_books_lis_view_bloc_builder.dart';
 import 'newest_books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -20,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(),
-              FeaturedBooksListView(),
+              FeaturedBooksListViewBlocConsumer(),
               SizedBox(height: 50),
               Text('Newest Books', style: Styles.textStyle18),
               SizedBox(height: 20),
