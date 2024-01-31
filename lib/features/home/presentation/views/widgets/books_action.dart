@@ -1,12 +1,11 @@
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
-
 
 import '../../../../../core/utils/functions/launcher_url.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../data/model/book_model/book_model.dart';
 
 class BooksAction extends StatelessWidget {
-  final BookModel book;
+  final BookEntity book;
   const BooksAction({
     Key? key,
     required this.book,
@@ -21,8 +20,7 @@ class BooksAction extends StatelessWidget {
           Expanded(
               child: CustomButton(
             onPressed: () async {
-              launchCustomUrl(
-                  context, book.accessInfo?.pdf?.acsTokenLink);
+              launchCustomUrl(context, book.acsTokenLink);
             },
             text: "Free",
             textColor: Colors.black,
@@ -33,7 +31,7 @@ class BooksAction extends StatelessWidget {
           Expanded(
               child: CustomButton(
             onPressed: () async {
-              launchCustomUrl(context, book.volumeInfo?.previewLink);
+              launchCustomUrl(context, book.previewLink);
             },
             fontSize: 16,
             text: getText(book),
@@ -48,8 +46,8 @@ class BooksAction extends StatelessWidget {
     );
   }
 
-  String getText(BookModel book) {
-    if (book.volumeInfo?.previewLink == null) {
+  String getText(BookEntity book) {
+    if (book.previewLink == null) {
       return "Not Available";
     } else {
       return "Preview";

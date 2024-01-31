@@ -1,12 +1,12 @@
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/model/book_model/book_model.dart';
 import 'book_details_section.dart';
 import 'custom_book_details_appbar.dart';
 import 'similar_books_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  final BookModel book;
+  final BookEntity book;
   const BookDetailsViewBody({
     Key? key,
     required this.book,

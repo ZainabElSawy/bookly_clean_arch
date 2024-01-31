@@ -1,10 +1,10 @@
 import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
+import 'package:bookly_clean_arch/features/home/presentation/views/widgets/featured_books_list_view_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/build_error_snack_bar.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../manager/featured_books_cubit/featured_books_cubit.dart';
 import 'featured_list_view.dart';
 
@@ -40,11 +40,10 @@ class _FeaturedBooksListViewBlocConsumerState
         } else if (state is FeaturedBooksFailure) {
           return CustomErrorMessage(errMessage: state.errMessage);
         } else {
-          return const CustomLoadingIndicator();
+          return const FeaturedBooksListViewLoadingIndicator();
+          // return const CustomLoadingIndicator();
         }
       },
     );
   }
-
-  
 }

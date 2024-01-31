@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_lis_view_bloc_builder.dart';
-import 'newest_books_list_view.dart';
+import 'newest_books_list_view_bloc_consumer.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -27,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           )),
           SliverFillRemaining(
-            child: NewestBooksListView(),
+            child: NewestBooksListViewBlocConsumer(),
           )
         ],
       ),

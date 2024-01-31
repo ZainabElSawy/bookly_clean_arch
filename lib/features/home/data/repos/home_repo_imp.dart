@@ -36,12 +36,14 @@ class HomeRepoImp implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks(
+      {int pageNumber = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchNewestBooks();
+      books = homeLocalDataSource.fetchNewestBooks(pageNumber: pageNumber);
       if (books.isNotEmpty) return right(books);
-      books = await homeRemoteDataSource.fetchNewestBooks();
+      books =
+          await homeRemoteDataSource.fetchNewestBooks(pageNumber: pageNumber);
       return right(books);
     } catch (e) {
       // ignore: deprecated_member_use
@@ -52,22 +54,21 @@ class HomeRepoImp implements HomeRepo {
     }
   }
 
-  // @override
-  // Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category})async {
-  //   try {
-  //     Map<String, dynamic> data = await apiService.get(
-  //         endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=relevance');
-  //     List<BookModel> books = [];
-  //     for (var book in data['items']) {
-  //       books.add(BookModel.fromJson(book));
-  //     }
-  //     return right(books);
-  //   } catch (e) {
-  //     // ignore: deprecated_member_use
-  //     if (e is DioError) {
-  //       return left(ServerFailure.fromDioError(e));
-  //     }
-  //     return left(ServerFailure(e.toString()));
-  //   }
-  // }
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      List<BookEntity> books;
+      // books = homeLocalDataSource.fetchNewestBooks(pageNumber: pageNumber);
+      // if (books.isNotEmpty) return right(books);
+      books = await homeRemoteDataSource.fetchSimilarBooks();
+      return right(books);
+    } catch (e) {
+      // ignore: deprecated_member_use
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

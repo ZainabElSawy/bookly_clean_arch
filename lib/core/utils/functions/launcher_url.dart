@@ -6,7 +6,7 @@ import 'custom_snack_bar.dart';
 Future<void> launchCustomUrl(BuildContext context, String? url) async {
   if (url != null) {
     final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
+    if (url != "") {
       await launchUrl(uri);
     } else {
       // ignore: use_build_context_synchronously
@@ -14,4 +14,3 @@ Future<void> launchCustomUrl(BuildContext context, String? url) async {
     }
   }
 }
-

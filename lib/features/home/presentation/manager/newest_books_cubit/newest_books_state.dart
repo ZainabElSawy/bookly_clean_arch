@@ -10,10 +10,15 @@ sealed class NewestBooksState extends Equatable {
 final class NewestBooksInitial extends NewestBooksState {}
 
 final class NewestBooksLoading extends NewestBooksState {}
+final class NewestBooksPaginationLoading extends NewestBooksState {}
 
 final class NewestBooksFailure extends NewestBooksState {
   final String errMessage;
   const NewestBooksFailure(this.errMessage);
+}
+final class NewestBooksPaginationFailure extends NewestBooksState {
+  final String errMessage;
+  const NewestBooksPaginationFailure(this.errMessage);
 }
 
 final class NewestBooksSuccess extends NewestBooksState {
